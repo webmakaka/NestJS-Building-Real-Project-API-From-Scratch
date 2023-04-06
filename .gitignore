@@ -1,0 +1,15 @@
+*.~
+*.*~
+*.log
+*.swp
+
+node_modules/
+logs/
+
+.vscode
+.angular/
+
+.pnp.cjs
+.pnp.loader.mjs
+
+.yarn
