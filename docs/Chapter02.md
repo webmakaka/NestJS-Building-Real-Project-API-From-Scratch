@@ -77,6 +77,39 @@ Indexes:
 
 <br/>
 
+### 010 Начинаем работать с репозиторием тегов
+
+<br/>
+
+```
+INSERT INTO tags (name) VALUES ('dragons');
+INSERT INTO tags (name) VALUES ('coffee');
+SELECT * FROM tags;
+```
+
+<br/>
+
+```
+// GET ALL TAGS
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/tags \
+    | jq
+```
+
+**response:**
+
+```
+{
+  "tags": [
+    "dragons",
+    "coffee"
+  ]
+}
+```
+
+<br/>
+
 ---
 
 <br/>
