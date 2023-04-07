@@ -57,6 +57,26 @@ $ yarn add pg
 
 <br/>
 
+### 009 Создаем сущность тега
+
+```
+postgresdb=# \dt
+```
+
+```
+postgresdb=# \d tags;
+                                 Table "public.tags"
+ Column |       Type        | Collation | Nullable |             Default
+--------+-------------------+-----------+----------+----------------------------------
+ id     | integer           |           | not null | nextval('tags_id_seq'::regclass)
+ name   | character varying |           | not null |
+Indexes:
+    "PK_e7dc17249a1148a1970748eda99" PRIMARY KEY, btree (id)
+
+```
+
+<br/>
+
 ---
 
 <br/>
