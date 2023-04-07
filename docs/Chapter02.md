@@ -37,6 +37,26 @@ $ curl \
 
 <br/>
 
+### 006 Настраиваем абсолютные пути
+
+<br/>
+
+### 007 Устанавливаем Postgres
+
+https://jsdev.org/env/docker/db/postgresql/
+
+<br/>
+
+### 008 Конфигурируем базу данных
+
+```
+$ yarn add typeorm
+$ yarn add @nestjs/typeorm
+$ yarn add pg
+```
+
+<br/>
+
 ---
 
 <br/>
