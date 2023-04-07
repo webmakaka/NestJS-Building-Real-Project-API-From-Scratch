@@ -82,6 +82,13 @@ Indexes:
 <br/>
 
 ```
+// Connect
+$ PGPASSWORD=pA55w0rd123 psql -U admin1 -h postgres -p 5432 -d postgresdb
+```
+
+<br/>
+
+```
 INSERT INTO tags (name) VALUES ('dragons');
 INSERT INTO tags (name) VALUES ('coffee');
 SELECT * FROM tags;
