@@ -75,12 +75,16 @@ $ curl \
 
 <br/>
 
-    $ yarn add bcrypt
+```
+$ yarn add bcrypt
+```
 
 <br/>
 
-    $ yarn db:create src/migrations/CreateUsers
-    $ yarn db:migrate
+```
+$ yarn db:create src/migrations/CreateUsers
+$ yarn db:migrate
+```
 
 <br/>
 
@@ -122,7 +126,6 @@ Indexes:
   "bio": "",
   "image": ""
 }
-
 ```
 
 <br/>
@@ -138,7 +141,49 @@ postgresdb=# SELECT * FROM users;
 ----+--------------------+-----+-------+--------------------------------------------------------------
   1 | marley@example.com |     |       | $2b$10$ixzFpXpXkym97huk/Dezz.a8p2CTs94zOx/4uVyLXf5gS.LV1sNzW
 (1 row)
+```
 
+<br/>
+
+### 015 Генерируем JWT токен
+
+<br/>
+
+```
+$ yarn add jsonwebtoken
+$ yarn add -D @types/jsonwebtoken
+```
+
+<br/>
+
+```
+$ yarn db:create src/migrations/AddUsernameToUsers
+$ yarn db:drop
+$ yarn db:migrate
+```
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "user": {
+    "username": "marley",
+    "email": "marley@example.com",
+    "password": "$2b$10$4dWJKpm4MpihMjHhHhCN8OLsKG2OgS7o4.mO1ZUvwTwxL54bxPDAq",
+    "id": 1,
+    "bio": "",
+    "image": "",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MDk5NzgwM30.w4U55VwbvbKJvC27g0hYxv64BcIkffi0UGLwibcoGzc"
+  }
+}
 ```
 
 <br/>
