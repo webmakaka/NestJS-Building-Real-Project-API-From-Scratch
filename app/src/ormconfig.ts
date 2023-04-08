@@ -7,12 +7,12 @@ export const ormconfig: ConnectionOptions = {
   database: 'postgresdb',
   username: 'admin1',
   password: 'pA55w0rd123',
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
 };
 
 const PostgresDataSource = new DataSource({
   ...ormconfig,
   synchronize: false,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,js}'],
 });
 

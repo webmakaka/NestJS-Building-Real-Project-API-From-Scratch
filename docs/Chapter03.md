@@ -71,6 +71,78 @@ $ curl \
 
 <br/>
 
+### 014 Создаем сущность пользователя
+
+<br/>
+
+    $ yarn add bcrypt
+
+<br/>
+
+    $ yarn db:create src/migrations/CreateUsers
+    $ yarn db:migrate
+
+<br/>
+
+```
+postgresdb=# \d users;
+```
+
+<br/>
+
+```
+                                  Table "public.users"
+  Column  |       Type        | Collation | Nullable |              Default
+----------+-------------------+-----------+----------+-----------------------------------
+ id       | integer           |           | not null | nextval('users_id_seq'::regclass)
+ email    | character varying |           | not null |
+ bio      | character varying |           | not null | ''::character varying
+ image    | character varying |           | not null | ''::character varying
+ password | character varying |           | not null |
+Indexes:
+    "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY, btree (id)
+```
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "username": "marley",
+  "email": "marley@example.com",
+  "password": "$2b$10$ixzFpXpXkym97huk/Dezz.a8p2CTs94zOx/4uVyLXf5gS.LV1sNzW",
+  "id": 1,
+  "bio": "",
+  "image": ""
+}
+
+```
+
+<br/>
+
+```
+postgresdb=# SELECT * FROM users;
+```
+
+<br/>
+
+```
+ id |       email        | bio | image |                           password
+----+--------------------+-----+-------+--------------------------------------------------------------
+  1 | marley@example.com |     |       | $2b$10$ixzFpXpXkym97huk/Dezz.a8p2CTs94zOx/4uVyLXf5gS.LV1sNzW
+(1 row)
+
+```
+
+<br/>
+
 ---
 
 <br/>
