@@ -1,12 +1,16 @@
-import { DataSource } from 'typeorm';
+import { ConnectionOptions, DataSource } from 'typeorm';
 
-const PostgresDataSource = new DataSource({
+export const ormconfig: ConnectionOptions = {
   type: 'postgres',
   host: 'postgres',
   port: 5432,
   database: 'postgresdb',
   username: 'admin1',
   password: 'pA55w0rd123',
+};
+
+const PostgresDataSource = new DataSource({
+  ...ormconfig,
   synchronize: false,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,js}'],
