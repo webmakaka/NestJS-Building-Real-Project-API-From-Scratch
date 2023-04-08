@@ -28,7 +28,17 @@ postgresdb=# SELECT * FROM migrations;
 ----+---------------+-------------------------
   1 | 1680910391043 | CreateTags1680910391043
 (1 row)
+```
 
+<br/>
+
+### 012 Подготавливаем запрос для регистрации
+
+```
+// REGISTER USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users
 ```
 
 <br/>
