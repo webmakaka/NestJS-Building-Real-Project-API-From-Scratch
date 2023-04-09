@@ -115,7 +115,7 @@ Indexes:
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -170,7 +170,7 @@ $ yarn db:migrate
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -205,7 +205,7 @@ $ yarn add class-transformer
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -233,7 +233,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -245,6 +245,74 @@ $ curl \
     "image": "",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MTAwMzQwNn0.mbJsY9_n1kAeWNxYrPae7AY3j2aPfoG59ZmraaLSn4U"
   }
+}
+```
+
+<br/>
+
+### 018 Middleware авторизации
+
+```
+$ AUTH_TOKEN=$(curl \
+     --data '{
+        "user": {
+            "email": "marley@example.com",
+            "password": "pass123"}
+       }' \
+     --header "Content-Type: application/json" \
+     --request POST http://localhost:3000/users/login \
+     | jq -r '.user.token')
+```
+
+<br/>
+
+```
+$ echo ${AUTH_TOKEN}
+```
+
+<br/>
+
+```
+// GET USER
+$ curl \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/user \
+    | jq
+```
+
+<br/>
+
+**response:**
+
+```
+{
+  "user": {
+    "id": 1,
+    "email": "marley@example.com",
+    "username": "marley",
+    "bio": "",
+    "image": "",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MTAzNTY0M30.gcDVkUXglBdxRbMCD52I8xZNHXG7l4FiD9n-AXshOGE"
+  }
+}
+```
+
+<br/>
+
+Нужно смотреть ответ от middleware в консоли:
+
+<br/>
+
+**output:**
+
+```
+req.user UserEntity {
+  id: 1,
+  email: 'marley@example.com',
+  username: 'marley',
+  bio: '',
+  image: ''
 }
 ```
 
