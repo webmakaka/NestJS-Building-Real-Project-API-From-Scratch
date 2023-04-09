@@ -139,6 +139,49 @@ $ curl \
 
 <br/>
 
+### 024 Заканчиваем создание статьи
+
+```
+$ yarn add slugify
+```
+
+```
+// CREATE ARTICLE
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "article": {
+    "title": "How to train your dragon",
+    "description": "Ever wonder how?",
+    "body": "You have to believe",
+    "tagList": [
+      "reactjs",
+      "angularjs",
+      "dragons"
+    ],
+    "slug": "how-to-train-your-dragon-ct9eta",
+    "author": {
+      "id": 1,
+      "email": "marley@example.com",
+      "username": "marley",
+      "bio": "",
+      "image": ""
+    },
+    "id": 2,
+    "createdAt": "2023-04-09T16:18:33.332Z",
+    "updatedAt": "2023-04-09T16:18:33.332Z",
+    "favoritesCount": 0
+  }
+}
+```
+
+<br/>
+
 ---
 
 <br/>
