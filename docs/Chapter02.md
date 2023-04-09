@@ -59,9 +59,20 @@ $ yarn add pg
 
 ### 009 Создаем сущность тега
 
+<br/>
+
+```
+// Connect
+$ PGPASSWORD=pA55w0rd123 psql -U admin1 -h postgres -p 5432 -d postgresdb
+```
+
+<br/>
+
 ```
 postgresdb=# \dt
 ```
+
+<br/>
 
 ```
 postgresdb=# \d tags;
@@ -72,19 +83,11 @@ postgresdb=# \d tags;
  name   | character varying |           | not null |
 Indexes:
     "PK_e7dc17249a1148a1970748eda99" PRIMARY KEY, btree (id)
-
 ```
 
 <br/>
 
 ### 010 Начинаем работать с репозиторием тегов
-
-<br/>
-
-```
-// Connect
-$ PGPASSWORD=pA55w0rd123 psql -U admin1 -h postgres -p 5432 -d postgresdb
-```
 
 <br/>
 
