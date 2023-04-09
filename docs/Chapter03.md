@@ -305,7 +305,7 @@ $ curl \
 
 <br/>
 
-**output:**
+**console output:**
 
 ```
 req.user UserEntity {
@@ -329,10 +329,35 @@ req.user UserEntity {
 
 <br/>
 
-**output:**
+**console output:**
 
 ```
 currentUserId 1
+```
+
+<br/>
+
+### 020 Guard для авторизации
+
+```
+$ export AUTH_TOKEN='wrong-token'
+```
+
+<br/>
+
+```
+// GET CURRENT USER
+```
+
+<br/>
+
+**response:**
+
+```
+{
+  "statusCode": 401,
+  "message": "Not authorized!"
+}
 ```
 
 <br/>
