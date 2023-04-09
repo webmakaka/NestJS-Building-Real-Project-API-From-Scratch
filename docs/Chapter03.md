@@ -362,6 +362,52 @@ $ export AUTH_TOKEN='wrong-token'
 
 <br/>
 
+### 021 Обновление текущего пользователя
+
+```
+// GET AUTH TOKEN
+```
+
+<br/>
+
+```
+// UPDATE CURRENT USER
+$ curl \
+    --data '{
+        "user": {
+            "bio": "This is my BIO"}
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request PUT http://localhost:3000/user \
+    | jq
+```
+
+<br/>
+
+```
+// GET CURRENT USER
+```
+
+<br/>
+
+**response:**
+
+```
+{
+  "user": {
+    "id": 1,
+    "email": "marley@example.com",
+    "username": "marley",
+    "bio": "This is my BIO",
+    "image": "",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MTA0MzYyMH0.y4WWjH8Dpxa7Bo-Q8ycRrFRzquqelk_K6P8IpfXCMKM"
+  }
+}
+```
+
+<br/>
+
 ---
 
 <br/>

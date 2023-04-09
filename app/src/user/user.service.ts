@@ -5,6 +5,7 @@ import { sign } from 'jsonwebtoken';
 import { JWT_SECRET } from 'src/config';
 import { CreateUserDto } from 'src/user/dto/createUser.dto';
 import { LoginUserDto } from 'src/user/dto/login.dto';
+import { UpdateUserDto } from 'src/user/dto/updateUser.dto';
 import { UserResponseInterface } from 'src/user/types/userResponse.interface';
 import { UserEntity } from 'src/user/user.entity';
 import { Repository } from 'typeorm';
@@ -69,6 +70,15 @@ export class UserService {
     return this.userRepository.findOne({
       where: { id },
     });
+  }
+
+  async updateUser(
+    userId: number,
+    updateUserDto: UpdateUserDto,
+  ): Promise<UserEntity> {
+    const user = await this.findById(userId);
+    Object.assign(user, updateUserDto);
+    return await this.userRepository.save(user);
   }
 
   generateJwt(user: UserEntity): string {
