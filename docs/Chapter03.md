@@ -188,6 +188,34 @@ $ yarn db:migrate
 
 <br/>
 
+### 016 Знакомимся с валидацией
+
+<br/>
+
+```
+$ yarn add class-validator
+$ yarn add class-transformer
+```
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "statusCode": 422,
+  "message": "Email or username are taken!"
+}
+```
+
+<br/>
+
 ---
 
 <br/>
