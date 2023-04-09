@@ -216,6 +216,40 @@ $ yarn add class-transformer
 
 <br/>
 
+### 017 Реализуем логин запрос
+
+```
+// LOGIN USER
+$ curl \
+    --data '{
+        "user": {
+            "email": "marley@example.com",
+            "password": "pass123"}
+    }' \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users/login \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "user": {
+    "id": 1,
+    "email": "marley@example.com",
+    "username": "marley",
+    "bio": "",
+    "image": "",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MTAwMzQwNn0.mbJsY9_n1kAeWNxYrPae7AY3j2aPfoG59ZmraaLSn4U"
+  }
+}
+```
+
+<br/>
+
 ---
 
 <br/>
