@@ -253,6 +253,7 @@ $ curl \
 ### 018 Middleware авторизации
 
 ```
+// GET AUTH TOKEN
 $ AUTH_TOKEN=$(curl \
      --data '{
         "user": {
@@ -273,7 +274,7 @@ $ echo ${AUTH_TOKEN}
 <br/>
 
 ```
-// GET USER
+// GET CURRENT USER
 $ curl \
     --header "Authorization: Token ${AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
@@ -314,6 +315,24 @@ req.user UserEntity {
   bio: '',
   image: ''
 }
+```
+
+<br/>
+
+### 019 Создаем декоратор для пользователя
+
+<br/>
+
+```
+// GET CURRENT USER
+```
+
+<br/>
+
+**output:**
+
+```
+currentUserId 1
 ```
 
 <br/>
