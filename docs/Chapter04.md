@@ -397,7 +397,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 Смотрим: "favoritesCount": 1,
 
@@ -436,6 +436,85 @@ postgresdb=# SELECT * FROM users_favorites_articles;
 ---------+------------
        1 |          3
 (1 row)
+```
+
+<br/>
+
+### 030 Реализуем дизлайк статей
+
+<br/>
+
+```
+// GET LIKED ARTICLE BY USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?favorited=marley" \
+    | jq
+```
+
+<br/>
+
+```
+// DISLIKE ARTICLE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request DELETE "http://localhost:3000/articles/how-to-train-your-dragon-a366gk/favorite" \
+    | jq
+```
+
+<br/>
+
+```
+// LIKE ARTICLE
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES BY LOGGED IN USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request GET http://localhost:3000/articles \
+    | jq
+```
+
+<br/>
+
+**response:**
+
+Смотрим "favorited": true
+
+```
+{
+  "articles": [
+    {
+      "id": 3,
+      "slug": "how-to-train-your-dragon-a366gk",
+      "title": "Updated Title",
+      "description": "Updated description",
+      "body": "Updated body",
+      "createdAt": "2023-04-10T15:34:40.467Z",
+      "updatedAt": "2023-04-10T21:36:53.842Z",
+      "tagList": [
+        "reactjs",
+        "angularjs",
+        "dragons"
+      ],
+      "favoritesCount": 1,
+      "author": {
+        "id": 1,
+        "email": "marley@example.com",
+        "username": "marley",
+        "bio": "",
+        "image": ""
+      },
+      "favorited": true
+    }
+  ],
+  "articlesCount": 1
+}
 
 ```
 
