@@ -217,6 +217,30 @@ $ curl \
 
 <br/>
 
+### 026 Имплементируем удаление статьи
+
+```
+// DELETE ARTICLE BY SLUG
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request DELETE http://localhost:3000/articles/how-to-train-your-dragon-ct9eta \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+```
+ {
+  "raw": [],
+  "affected": 1
+}
+```
+
+<br/>
+
 ---
 
 <br/>

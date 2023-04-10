@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { ArticleService } from 'src/article/article.service';
 import { CreateArticleDto } from 'src/article/dto/createArticle.dto';
 import { ArticleResponseInterface } from 'src/article/types/articleResponse.interface';
@@ -29,5 +37,14 @@ export class ArticleController {
   ): Promise<ArticleResponseInterface> {
     const article = await this.articleService.findBySlig(slug);
     return this.articleService.buildArticleResponse(article);
+  }
+
+  @Delete(':slug')
+  @UseGuards(AuthGuard)
+  async deleteArticle(
+    @User('id') currentUserId: number,
+    @Param('slug') slug: string,
+  ) {
+    return await this.articleService.deleteArticle(slug, currentUserId);
   }
 }
