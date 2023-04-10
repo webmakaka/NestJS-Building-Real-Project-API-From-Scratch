@@ -182,6 +182,41 @@ $ yarn add slugify
 
 <br/>
 
+### 025 Реализуем получение статьи по слагу
+
+```
+// GET ARTICLE BY SLUG
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/articles/how-to-train-your-dragon-ct9eta \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+```
+  "article": {
+    "id": 2,
+    "slug": "how-to-train-your-dragon-ct9eta",
+    "title": "How to train your dragon",
+    "description": "Ever wonder how?",
+    "body": "You have to believe",
+    "createdAt": "2023-04-09T16:18:33.332Z",
+    "updatedAt": "2023-04-09T16:18:33.332Z",
+    "tagList": [
+      "reactjs",
+      "angularjs",
+      "dragons"
+    ],
+    "favoritesCount": 0
+  }
+}
+```
+
+<br/>
+
 ---
 
 <br/>
