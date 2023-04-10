@@ -296,6 +296,52 @@ $ curl \
 
 <br/>
 
+### 028 Создаем фид
+
+https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md
+
+<br/>
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/articles \
+    | jq
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES WITH LIMIT AND OFFSET
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?limit=2&offset=0" \
+    | jq
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES BY AUTHOR
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?author=marley" \
+    | jq
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES WITH TAG
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?tag=dragons" \
+    | jq
+```
+
+<br/>
+
 ---
 
 <br/>
