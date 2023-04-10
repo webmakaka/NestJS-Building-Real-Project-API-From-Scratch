@@ -342,6 +342,105 @@ $ curl \
 
 <br/>
 
+### 029 Реализуем лайк статей
+
+<br/>
+
+```
+$ yarn db:create src/migrations/AddFavoritesRelationsBetweenArticleAndUser
+$ yarn db:migrate
+```
+
+<br/>
+
+```
+postgresdb=# \x
+Expanded display is off.
+
+postgresdb=# \dt
+                 List of relations
+ Schema |           Name           | Type  | Owner
+--------+--------------------------+-------+--------
+ public | articles                 | table | admin1
+ public | migrations               | table | admin1
+ public | tags                     | table | admin1
+ public | users                    | table | admin1
+ public | users_favorites_articles | table | admin1
+(5 rows)
+
+
+postgresdb=# \d users_favorites_articles
+        Table "public.users_favorites_articles"
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ usersId    | integer |           | not null |
+ articlesId | integer |           | not null |
+Indexes:
+    "PK_aebb5070a5fa58957adae6d78af" PRIMARY KEY, btree ("usersId", "articlesId")
+    "IDX_61dc60abcf0035e5ce2aea013b" btree ("articlesId")
+    "IDX_b3bc5ca3e98f5f3858dbf626ad" btree ("usersId")
+Foreign-key constraints:
+    "FK_61dc60abcf0035e5ce2aea013bc" FOREIGN KEY ("articlesId") REFERENCES articles(id) ON UPDATE CASCADE ON DELETE CASCADE
+    "FK_b3bc5ca3e98f5f3858dbf626ad6" FOREIGN KEY ("usersId") REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+```
+
+<br/>
+
+```
+// LIKE ARTICLE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request POST "http://localhost:3000/articles/how-to-train-your-dragon-a366gk/favorite" \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+Смотрим: "favoritesCount": 1,
+
+```
+{
+  "article": {
+    "id": 3,
+    "slug": "how-to-train-your-dragon-a366gk",
+    "title": "Updated Title",
+    "description": "Updated description",
+    "body": "Updated body",
+    "createdAt": "2023-04-10T15:34:40.467Z",
+    "updatedAt": "2023-04-10T20:56:09.616Z",
+    "tagList": [
+      "reactjs",
+      "angularjs",
+      "dragons"
+    ],
+    "favoritesCount": 1,
+    "author": {
+      "id": 1,
+      "email": "marley@example.com",
+      "username": "marley",
+      "bio": "",
+      "image": ""
+    }
+  }
+}
+```
+
+<br/>
+
+```
+postgresdb=# SELECT * FROM users_favorites_articles;
+ usersId | articlesId
+---------+------------
+       1 |          3
+(1 row)
+
+```
+
+<br/>
+
 ---
 
 <br/>
