@@ -110,7 +110,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -151,7 +151,7 @@ $ yarn add slugify
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -194,7 +194,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
   "article": {
@@ -230,12 +230,67 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
  {
   "raw": [],
   "affected": 1
+}
+```
+
+<br/>
+
+### 027 Создаем обновление статьи
+
+```
+// CREATE ARTICLE
+```
+
+<br/>
+
+```
+// UPDATE ARTICLE
+$ curl \
+    --data '{
+        "article": {
+            "title": "Updated Title",
+            "description": "Updated description",
+            "body": "Updated body"
+        }
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request PUT http://localhost:3000/articles/how-to-train-your-dragon-a366gk \
+    | jq
+```
+
+**response:**
+
+```
+{
+  "article": {
+    "id": 3,
+    "slug": "how-to-train-your-dragon-a366gk",
+    "title": "Updated Title",
+    "description": "Updated description",
+    "body": "Updated body",
+    "createdAt": "2023-04-10T15:34:40.467Z",
+    "updatedAt": "2023-04-10T18:35:05.315Z",
+    "tagList": [
+      "reactjs",
+      "angularjs",
+      "dragons"
+    ],
+    "favoritesCount": 0,
+    "author": {
+      "id": 1,
+      "email": "marley@example.com",
+      "username": "marley",
+      "bio": "",
+      "image": ""
+    }
+  }
 }
 ```
 
