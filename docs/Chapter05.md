@@ -28,6 +28,35 @@ SELECT * FROM users;
 
 <br/>
 
+### 032 Реализуем получение профиля
+
+```
+// GET PROFILE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request GET "http://localhost:3000/profiles/marley" \
+    | jq
+```
+
+<br/>
+
+**response:**
+
+```
+{
+  "profile": {
+    "id": 1,
+    "username": "marley",
+    "bio": "",
+    "image": "",
+    "following": false
+  }
+}
+```
+
+<br/>
+
 ---
 
 <br/>

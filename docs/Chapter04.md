@@ -515,7 +515,6 @@ $ curl \
   ],
   "articlesCount": 1
 }
-
 ```
 
 <br/>
