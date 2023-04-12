@@ -14,6 +14,11 @@ export class SeedDb1680911827303 implements MigrationInterface {
     );
 
     await queryRunner.query(
+      // password is pass123
+      `INSERT INTO users (username, email, password) VALUES ('webmakaka', 'webmakaka@example.com', '$2b$10$PVuzmCrUkLUBGJ/Y0CABvOGMf.W9i4KGK5uDzy3NEjfd6BFpflmh6')`,
+    );
+
+    await queryRunner.query(
       `INSERT INTO articles (slug, title, description, body, "tagList", "authorId") VALUES ('first-article', 'First article', 'First article desc', 'First article body', 'coffee,dragons', 1)`,
     );
 

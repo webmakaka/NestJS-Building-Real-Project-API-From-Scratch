@@ -57,6 +57,66 @@ $ curl \
 
 <br/>
 
+### 033 Имплементируем фоллоу пользователей
+
+Решили делать в ручную
+
+```
+$ yarn db:create src/migrations/CreateFollows
+$ yarn db:migrate
+```
+
+<br/>
+
+```
+// CREATE NEW USER
+$ curl \
+    --data '{
+        "user": {
+            "username": "webmakaka",
+            "email": "webmakaka@example.com",
+            "password": "pass123"}
+    }' \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users \
+    | jq
+```
+
+<br/>
+
+```
+// FOLLOW USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request POST "http://localhost:3000/profiles/webmakaka/follow" \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "profile": {
+    "id": 2,
+    "username": "webmakaka",
+    "bio": "",
+    "image": "",
+    "following": true
+  }
+}
+```
+
+<br/>
+
+```
+SELECT * FROM follows;
+```
+
+<br/>
+
 ---
 
 <br/>
