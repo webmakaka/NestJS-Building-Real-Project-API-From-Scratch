@@ -8,12 +8,12 @@ export const ormconfig: ConnectionOptions = {
   username: 'admin1',
   password: 'pA55w0rd123',
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: false,
+  migrations: [__dirname + '/migrations/**/*{.ts,js}'],
 };
 
 const PostgresDataSource = new DataSource({
   ...ormconfig,
-  synchronize: false,
-  migrations: [__dirname + '/migrations/**/*{.ts,js}'],
 });
 
 PostgresDataSource.initialize()
