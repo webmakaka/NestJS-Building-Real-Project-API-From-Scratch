@@ -117,6 +117,43 @@ SELECT * FROM follows;
 
 <br/>
 
+### 034 Реализуем анфоллоу пользователей
+
+<br/>
+
+```
+// UNFOLLOW USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request DELETE "http://localhost:3000/profiles/webmakaka/follow" \
+    | jq
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+  "profile": {
+    "id": 2,
+    "username": "webmakaka",
+    "bio": "",
+    "image": "",
+    "following": false
+  }
+}
+```
+
+<br/>
+
+```
+// GET PROFILE
+```
+
+<br/>
+
 ---
 
 <br/>
