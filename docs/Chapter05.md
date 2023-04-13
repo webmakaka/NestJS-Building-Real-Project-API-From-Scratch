@@ -95,7 +95,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -132,7 +132,7 @@ $ curl \
 
 <br/>
 
-**returns:**
+**response:**
 
 ```
 {
@@ -150,6 +150,87 @@ $ curl \
 
 ```
 // GET PROFILE
+```
+
+<br/>
+
+### 035 Создаем фид текущего пользователя
+
+<br/>
+
+```
+// LOGIN AS WEBMAKAKA
+// GET AUTH TOKEN
+```
+
+<br/>
+
+```
+// WEBMAKAKA CREATE A NEW POST
+$ curl \
+    --data '{
+        "article": {
+            "title": "WebMakaka Super Ape",
+            "description": "WebMakaka a Long Story about Apes Planet",
+            "body": "Super cinema i think",
+            "tagList": ["monkeys", "animals", "cinema"]
+        }
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request POST http://localhost:3000/articles \
+    | jq
+```
+
+<br/>
+
+```
+// MARLEY FOLLOW WEBMAKAKA
+```
+
+<br/>
+
+```
+// MARLEY GET FEED
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
+    --request GET "http://localhost:3000/articles/feed" \
+    | jq
+```
+
+<br/>
+
+**response:**
+
+```
+{
+  "articles": [
+    {
+      "id": 3,
+      "slug": "webmakaka-super-ape-qyqjvb",
+      "title": "WebMakaka Super Ape",
+      "description": "WebMakaka a Long Story about Apes Planet",
+      "body": "Super cinema i think",
+      "createdAt": "2023-04-13T19:11:24.645Z",
+      "updatedAt": "2023-04-13T19:11:24.645Z",
+      "tagList": [
+        "monkeys",
+        "animals",
+        "cinema"
+      ],
+      "favoritesCount": 0,
+      "author": {
+        "id": 2,
+        "email": "webmakaka@example.com",
+        "username": "webmakaka",
+        "bio": "",
+        "image": ""
+      }
+    }
+  ],
+  "articlesCount": 1
+}
 ```
 
 <br/>

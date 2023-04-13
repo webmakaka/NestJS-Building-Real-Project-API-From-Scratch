@@ -6,6 +6,7 @@ import { CreateArticleDto } from 'src/article/dto/createArticle.dto';
 import { ArticleResponseInterface } from 'src/article/types/articleResponse.interface';
 import { ArticlesResponseInterface } from 'src/article/types/articlesResponse.interface';
 import PostgresDataSource from 'src/ormconfig';
+import { FollowEntity } from 'src/profile/follow.entity';
 import { UserEntity } from 'src/user/user.entity';
 import { DeleteResult, Repository } from 'typeorm';
 
@@ -17,6 +18,9 @@ export class ArticleService {
 
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+
+    @InjectRepository(FollowEntity)
+    private readonly followRepository: Repository<FollowEntity>,
   ) {}
 
   async findAll(
@@ -82,12 +86,47 @@ export class ArticleService {
     }
 
     const articles = await queryBuilder.getMany();
-    const articlesWIthFavorites = articles.map((article) => {
+    const articlesWithFavorites = articles.map((article) => {
       const favorited = favoriteIds.includes(article.id);
       return { ...article, favorited };
     });
 
-    return { articles: articlesWIthFavorites, articlesCount };
+    return { articles: articlesWithFavorites, articlesCount };
+  }
+
+  async getFeed(
+    currentUserId: number,
+    query: any,
+  ): Promise<ArticlesResponseInterface> {
+    const follows = await this.followRepository.find({
+      where: { followerId: currentUserId },
+    });
+
+    if (follows.length === 0) {
+      return { articles: [], articlesCount: 0 };
+    }
+
+    const followingUserIds = follows.map((follow) => follow.followingId);
+    const queryBuilder = PostgresDataSource.getRepository(ArticleEntity)
+      .createQueryBuilder('articles')
+      .leftJoinAndSelect('articles.author', 'author')
+      .where('articles.authorId IN (:...ids)', { ids: followingUserIds });
+
+    queryBuilder.orderBy('articles.createdAt', 'DESC');
+
+    const articlesCount = await queryBuilder.getCount();
+
+    if (query.limit) {
+      queryBuilder.limit(query.limit);
+    }
+
+    if (query.offset) {
+      queryBuilder.offset(query.offset);
+    }
+
+    const articles = await queryBuilder.getMany();
+
+    return { articles, articlesCount };
   }
 
   async createArticle(
