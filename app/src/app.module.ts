@@ -1,7 +1,5 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from 'src/app.controller';
-import { AppService } from 'src/app.service';
 import { ArticleModule } from 'src/article/article.module';
 import { ormconfig } from 'src/ormconfig';
 import { ProfileModule } from 'src/profile/profile.module';
@@ -17,8 +15,8 @@ import { UserModule } from 'src/user/user.module';
     ArticleModule,
     ProfileModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

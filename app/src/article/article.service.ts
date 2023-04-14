@@ -145,7 +145,7 @@ export class ArticleService {
     return await this.articleRepository.save(article);
   }
 
-  async findBySlig(slug: string): Promise<ArticleEntity> {
+  async findBySlug(slug: string): Promise<ArticleEntity> {
     return await this.articleRepository.findOne({
       where: { slug },
     });
@@ -155,7 +155,7 @@ export class ArticleService {
     slug: string,
     currentUserId: number,
   ): Promise<DeleteResult> {
-    const article = await this.findBySlig(slug);
+    const article = await this.findBySlug(slug);
 
     if (!article) {
       throw new HttpException('Article does not exist!', HttpStatus.NOT_FOUND);
@@ -173,7 +173,7 @@ export class ArticleService {
     updateArticleDto: CreateArticleDto,
     currentUserId: number,
   ): Promise<ArticleEntity> {
-    const article = await this.findBySlig(slug);
+    const article = await this.findBySlug(slug);
 
     if (!article) {
       throw new HttpException('Article does not exist!', HttpStatus.NOT_FOUND);
@@ -191,7 +191,7 @@ export class ArticleService {
     slug: string,
     currentUserId: number,
   ): Promise<ArticleEntity> {
-    const article = await this.findBySlig(slug);
+    const article = await this.findBySlug(slug);
 
     const user = await this.userRepository.findOne({
       where: { id: currentUserId },
@@ -217,7 +217,7 @@ export class ArticleService {
     slug: string,
     currentUserId: number,
   ): Promise<ArticleEntity> {
-    const article = await this.findBySlig(slug);
+    const article = await this.findBySlug(slug);
 
     const user = await this.userRepository.findOne({
       where: { id: currentUserId },

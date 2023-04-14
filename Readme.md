@@ -32,6 +32,68 @@ $ nest -v
 
 <br/>
 
+## Запуск
+
+<br/>
+
+```
+$ git clone https://github.com/webmakaka/NestJS-Building-Real-Project-API-From-Scratch.git
+$ cd /NestJS-Building-Real-Project-API-From-Scratch/app
+$ yarn install
+$ yarn start
+```
+
+<br/>
+
+```
+$ cd app
+$ yarn db:drop
+$ yarn db:migrate
+$ yarn db:seed
+```
+
+<br/>
+
+```
+$ git clone https://github.com/gothinkster/realworld.git
+$ cd /realworld/api
+
+$ export APIURL=http://localhost:3000/api
+$ export USERNAME=marley
+$ export EMAIL=marley@example.com
+$ export PASSWORD=pass123
+
+$ ./run-api-tests.sh
+```
+
+<br/>
+
+```
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │               32 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │               48 │                2 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │               18 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │              303 │               49 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 17.4s                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 11.77kB (approx)                         │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 19ms [min: 4ms, max: 81ms, s.d.: 18ms] │
+└───────────────────────────────────────────────────────────────┘
+```
+
+<br/>
+
+## Разработка
+
 ### [01 Подготавливаем инструменты](./docs/Chapter01.md)
 
 ### [02 Модуль тегов](./docs/Chapter02.md)
