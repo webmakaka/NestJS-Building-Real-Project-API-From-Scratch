@@ -82,6 +82,44 @@ $ curl \
 
 <br/>
 
+### 037 Тестируем API на реальном фронтенде
+
+Проект:  
+https://github.com/webmakaka/Angular-and-NgRx-Building-Real-Project-From-Scratch
+
+<br/>
+
+```
+app/src/app/constants.ts
+```
+
+Вместо
+
+```
+https://api.realworld.io/api
+```
+
+Прописать
+
+```
+http://localhost:3000
+```
+
+<br/>
+
+```
+$ yarn install
+$ yarn start
+```
+
+<br/>
+
+```
+localhost:4200
+```
+
+<br/>
+
 ---
 
 <br/>
