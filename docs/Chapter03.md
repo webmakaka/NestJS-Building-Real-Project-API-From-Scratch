@@ -59,6 +59,8 @@ $ curl \
     | jq
 ```
 
+<br/>
+
 **response:**
 
 ```
