@@ -34,18 +34,22 @@ $ nest -v
 
 ## Запуск
 
-<br/>
-
 ```
 $ git clone https://github.com/webmakaka/NestJS-Building-Real-Project-API-From-Scratch.git
-$ cd /NestJS-Building-Real-Project-API-From-Scratch/app
-$ yarn install
-$ yarn start
 ```
 
 <br/>
 
 ```
+// Запуск базы
+$ cd NestJS-Building-Real-Project-API-From-Scratch/docker
+$ docker-compse up
+```
+
+<br/>
+
+```
+// Создание структур таблиц и добавление данных
 $ cd app
 $ yarn db:drop
 $ yarn db:migrate
@@ -55,6 +59,16 @@ $ yarn db:seed
 <br/>
 
 ```
+// Запуск приложения
+$ cd NestJS-Building-Real-Project-API-From-Scratch/app
+$ yarn install
+$ yarn start
+```
+
+<br/>
+
+```
+// Проверка разработанного приложения тестами
 $ git clone https://github.com/gothinkster/realworld.git
 $ cd /realworld/api
 
